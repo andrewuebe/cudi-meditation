@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Peta');
+
+html {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+  background: rgb(52, 20, 103);
+  background: linear-gradient(
+    160deg,
+    rgba(52, 20, 103, 1) 0%,
+    rgba(168, 19, 130, 1) 43%,
+    rgba(226, 102, 30, 1) 100%
+  );
+}
+
+* {
+  font-family: "Lexend Peta", sans-serif;
+  color: #fdfdfd;
+}
+
+.app-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+  background: url("../imgs/cudi-space-bg.png");
+  background-position: center center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+}
+.app-title {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  padding-right: 9px;
+}
+.app-title__shadow:first-of-type{
+  top: 3px;
+  left: -3px;
+  color: rgba(226, 102, 30, 1);
+  z-index: -1;
+}
+
+.app-title__shadow {
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 6px;
+  left: -0px;
+  color: rgba(168, 19, 130, 1);
+  z-index: -2;
+}
+
+.app-title__shadow:last-of-type {
+  top: 9px;
+  left: 3px;
+  color: rgba(52, 20, 103, 1);
+  z-index: -3;
+}
+
+/* Meditation Component */
+
+.meditation-wrapper {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  min-height: calc( 100vh - 60px);
+  align-items: center;
+  justify-content: center;
+}
+
+.meditation-orb{
+  display: flex;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 100%;
+  background-color: rgba(226, 102, 30, 0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+.meditation-orb::after {
+  display: block;
+  content: '';
+  background-image: url('../imgs/cudi-moon.png');
+  background-size: cover;
+  width:64vw;
+  height: 64vw;
+  position: absolute;
+  opacity: 0.9;
+  margin-right: 20px;
+}
+
+.meditation-orb.on::after {
+  animation: breathe2 9.7s infinite;
+}
+
+.meditation-orb.paused::after {
+  animation-play-state: paused;
+}
+
+.meditation-orb.off {
+  box-shadow: 0px 0px 0px rgba(253, 253, 253, 0.0);
+  transition: box-shadow 0.2s ease;
+}
+
+.meditation-orb.off:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 30px rgba(253, 253, 253, 0.2);
+}
+
+.meditation-orb.on {
+  display: flex;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 100%;
+  background-color: rgba(226, 102, 30, 0.9);
+  animation: breathe 9.7s infinite;
+  align-items: center;
+  justify-content: center;
+}
+
+.meditaiton-orb.on.paused{
+  animation-play-state: paused !important;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    width: 50vw;
+    height: 50vw;
+    background-color: rgba(226, 102, 30, 0.9);
+  }
+  41.8% {
+    width: 60vw;
+    height: 60vw;
+    background-color: rgba(52, 20, 103, 0.9);
+  }
+}
+
+@keyframes breathe2 {
+  0%,
+  100% {
+    width: 64vw;
+    height: 64vw;
+  }
+  41.8% {
+    width: 76.8vw;
+    height: 76.8vw;
+  }
+}
+
+.meditation-info {
+  text-align: center;
+}
+
+.timer {
+  font-size: 35px;
+  margin-bottom: 1.4rem;
+}
+
+.breath-type {
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+#length, #source, #status, #currentTime {display: none;}
+
+.fa-spinner {
+  animation: rotating 2s linear infinite;
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.lyric {
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  max-width: 40vw;
+  padding: 1rem;
+  box-sizing: border-box;
+}
